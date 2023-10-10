@@ -60,7 +60,7 @@ export function caesarCipher(str, shift) {
       const lowerCaseLetter = letter.toLowerCase();
       let index = alphabet.indexOf(lowerCaseLetter) + shift;
       if (index > 25) {
-        // Wrap backt to start
+        // Wrap back to start
         index -= 26;
       }
       const shiftedLetter = alphabet[index];
@@ -78,4 +78,34 @@ export function caesarCipher(str, shift) {
     }
   }
   return shiftedStr.join("");
+}
+
+export function analyseArray(arr) {
+  const obj = {};
+  // Get average
+  const total = arr.reduce((sum, current) => sum + current, 0);
+  obj.average = total / arr.length;
+
+  // Get min
+  let min = arr[0];
+  arr.forEach((x) => {
+    if (x < min) {
+      min = x;
+    }
+  });
+  obj.min = min;
+
+  // Get max
+  let max = arr[0];
+  arr.forEach((x) => {
+    if (x > max) {
+      max = x;
+    }
+  });
+  obj.max = max;
+
+  // Get length
+  obj.length = arr.length;
+
+  return obj;
 }
